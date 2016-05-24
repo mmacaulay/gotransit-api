@@ -34,5 +34,6 @@ dependencies {
 test {
     testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat = "full"
     }
 }

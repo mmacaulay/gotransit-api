@@ -6,10 +6,11 @@ import kotlin.test.assertEquals
 class ParserTest {
     val parser = Parser()
 
+    // Stops
     @Test
     fun testParsesListOfStops() {
         val stops = parser.parse<Stop>("/gtfs-data/stops.txt")
-        assertEquals(1648, stops.size, "Parses a list of stops")
+        assertEquals(1648, stops.size)
     }
 
     @Test
@@ -17,14 +18,34 @@ class ParserTest {
         val stops = parser.parse<Stop>("/gtfs-data/stops.txt")
         val first = stops[0]
         //WH-ENT-10043,Whitby GO-Brock St S,43.8656,-78.9361,,,2,whtbyS-parent,0
-        assertEquals(first.id, "WH-ENT-10043")
-        assertEquals(first.name, "Whitby GO-Brock St S")
-        assertEquals(first.lat, 43.8656)
-        assertEquals(first.lon, -78.9361)
-        assertEquals(first.zoneId, null)
-        assertEquals(first.url, null)
-        assertEquals(first.locationType, 2)
-        assertEquals(first.parentStation, "whtbyS-parent")
-        assertEquals(first.wheelchairBoarding, 0)
+        assertEquals("WH-ENT-10043", first.id)
+        assertEquals("Whitby GO-Brock St S", first.name)
+        assertEquals(43.8656, first.lat)
+        assertEquals(-78.9361, first.lon)
+        assertEquals(null, first.zoneId)
+        assertEquals(null, first.url)
+        assertEquals(2, first.locationType)
+        assertEquals("whtbyS-parent", first.parentStation)
+        assertEquals(0, first.wheelchairBoarding)
+    }
+
+    // Routes
+    @Test
+    fun testParsesListOfRoutes() {
+        val routes = parser.parse<Route>("/gtfs-data/routes.txt")
+        assertEquals(50, routes.size)
+    }
+
+    @Test
+    fun testParsesARoute() {
+        val routes = parser.parse<Route>("/gtfs-data/routes.txt")
+        val first = routes[0]
+        assertEquals("237-ST", first.id)
+        assertEquals("GO", first.agencyId)
+        assertEquals("ST", first.shortName)
+        assertEquals("Stouffville", first.longName)
+        assertEquals(2, first.type)
+        assertEquals("794500", first.colour)
+        assertEquals("FFFFFF", first.textColour)
     }
 }
