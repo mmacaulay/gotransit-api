@@ -22,7 +22,17 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    // http://mvnrepository.com/artifact/com.univocity/univocity-parsers
+    compile group: 'com.univocity', name: 'univocity-parsers', version: '2.1.1'
+
     testCompile 'com.natpryce:hamkrest:1.1.0.0'
     testCompile "junit:junit:4.11"
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
 }
