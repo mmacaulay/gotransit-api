@@ -1,0 +1,28 @@
+group 'com.returnofthemac'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlinVersion = '1.0.1-2'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    testCompile 'com.natpryce:hamkrest:1.1.0.0'
+    testCompile "junit:junit:4.11"
+    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+}
