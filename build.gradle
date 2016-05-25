@@ -33,9 +33,9 @@ dependencies {
     compile "io.dropwizard:dropwizard-core:0.9.2"
     compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.7.1-2'
 
-    testCompile 'com.natpryce:hamkrest:1.1.0.0'
     testCompile "junit:junit:4.11"
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+    testCompile "io.dropwizard:dropwizard-testing:0.9.2"
 }
 
 test {
