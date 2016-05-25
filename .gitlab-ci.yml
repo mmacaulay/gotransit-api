@@ -1,0 +1,10 @@
+before_script:
+  # Install Java
+  - update-ca-certificates
+  - add-apt-repository ppa:webupd8team/java
+  - apt-get update -y
+  - apt-get install -y oracle-java8-installer
+
+test:
+  script:
+    - ./gradlew test
