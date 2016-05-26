@@ -1,7 +1,7 @@
 package com.returnofthemac.gotransit_api.resources
 
 import com.codahale.metrics.annotation.Timed
-import com.returnofthemac.gotransit_api.gtfs.Stop
+import com.returnofthemac.gotransit_api.Stop
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response

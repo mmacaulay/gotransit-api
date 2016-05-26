@@ -1,11 +1,13 @@
-package com.returnofthemac.gotransit_api.gtfs
+package com.returnofthemac.gotransit_api
 
+import com.returnofthemac.gotransit_api.GTFSParser
+import com.returnofthemac.gotransit_api.Route
 import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class RoutesParsingTests {
-    val parser = Parser()
+    val parser = GTFSParser()
     var routes: List<Route> = emptyList()
 
     @Before

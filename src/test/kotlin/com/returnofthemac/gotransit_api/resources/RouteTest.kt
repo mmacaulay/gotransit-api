@@ -1,6 +1,6 @@
 package com.returnofthemac.gotransit_api.resources
 
-import com.returnofthemac.gotransit_api.gtfs.Route
+import com.returnofthemac.gotransit_api.Route
 import io.dropwizard.jackson.Jackson
 import io.dropwizard.testing.FixtureHelpers.fixture
 import org.junit.Test

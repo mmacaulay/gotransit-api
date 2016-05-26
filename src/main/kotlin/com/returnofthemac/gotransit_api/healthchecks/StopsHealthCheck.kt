@@ -1,7 +1,7 @@
 package com.returnofthemac.gotransit_api.healthchecks
 
 import com.codahale.metrics.health.HealthCheck
-import com.returnofthemac.gotransit_api.gtfs.Stop
+import com.returnofthemac.gotransit_api.Stop
 
 class StopsHealthCheck(val stops: List<Stop>): HealthCheck() {
     override fun check(): Result? {

@@ -1,4 +1,4 @@
-package com.returnofthemac.gotransit_api.gtfs
+package com.returnofthemac.gotransit_api
 
 import com.univocity.parsers.common.processor.BeanListProcessor
 import com.univocity.parsers.csv.CsvParser
@@ -6,7 +6,7 @@ import com.univocity.parsers.csv.CsvParserSettings
 import java.io.InputStreamReader
 import java.io.Reader
 
-open class Parser () {
+open class GTFSParser() {
     fun getReader (relativePath: String): Reader {
         return InputStreamReader(this.javaClass.getResourceAsStream(relativePath), "UTF-8")
     }

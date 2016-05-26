@@ -4,9 +4,9 @@ import io.dropwizard.Application
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import com.returnofthemac.gotransit_api.gtfs.Parser
-import com.returnofthemac.gotransit_api.gtfs.Route
-import com.returnofthemac.gotransit_api.gtfs.Stop
+import com.returnofthemac.gotransit_api.GTFSParser
+import com.returnofthemac.gotransit_api.Route
+import com.returnofthemac.gotransit_api.Stop
 import com.returnofthemac.gotransit_api.healthchecks.RoutesHealthCheck
 import com.returnofthemac.gotransit_api.healthchecks.StopsHealthCheck
 import com.returnofthemac.gotransit_api.resources.RoutesResource
@@ -27,7 +27,7 @@ class App() : Application<AppConfig>() {
     }
 
     override fun run(configuration: AppConfig, environment: Environment) {
-        val parser = Parser()
+        val parser = GTFSParser()
 
         // Routes
         val routes = parser.parse<Route>("/gtfs-data/routes.txt")

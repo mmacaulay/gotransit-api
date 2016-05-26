@@ -1,11 +1,13 @@
-package com.returnofthemac.gotransit_api.gtfs
+package com.returnofthemac.gotransit_api
 
+import com.returnofthemac.gotransit_api.GTFSParser
+import com.returnofthemac.gotransit_api.Stop
 import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class StopsParsingTests {
-    val parser = Parser()
+    val parser = GTFSParser()
     var stops: List<Stop> = emptyList()
 
     @Before

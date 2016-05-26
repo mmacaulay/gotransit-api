@@ -1,4 +1,4 @@
-package com.returnofthemac.gotransit_api.gtfs
+package com.returnofthemac.gotransit_api
 
 import com.univocity.parsers.annotations.Parsed
 
