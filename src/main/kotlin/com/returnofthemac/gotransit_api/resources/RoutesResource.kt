@@ -5,7 +5,7 @@ import com.returnofthemac.gotransit_api.gtfs.Route
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 
-data class RouteListResult(val data: List<Route>)
+data class RouteListResult(var data: List<Route> = emptyList())
 
 @Path("/routes")
 @Produces(MediaType.APPLICATION_JSON)

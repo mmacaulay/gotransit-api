@@ -22,4 +22,18 @@ class RouteTest {
         val actual = mapper.writeValueAsString(route)
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun testRouteDeserialization() {
+        val expected = Route(
+                id = "237-ST",
+                agencyId = "GO",
+                colour = "794500",
+                shortName = "ST",
+                longName = "Stouffville",
+                textColour = "FFFFFF",
+                type = 2)
+        val actual = mapper.readValue(fixture("fixtures/route.json"), Route::class.java)
+        assertEquals(expected, actual)
+    }
 }

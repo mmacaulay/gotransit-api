@@ -40,12 +40,12 @@ dependencies {
 
 test {
     testLogging {
-        events "passed", "skipped", "failed", "standardOut", "standardError"
+        events "passed", "skipped", "failed", "standardError"
         exceptionFormat = "full"
     }
 }
 
 run {
-    args 'server', 'dev_config.yml'
+    args 'server', 'config_dev.yml'
 }
 
