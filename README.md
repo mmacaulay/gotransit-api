@@ -7,8 +7,21 @@ A JSON API that wraps [GTFS](https://developers.google.com/transit/gtfs/referenc
 ## Quick Start
 
 
+### Run
 
-## Tests
+```
+./gradlew run
+```
+
+### Build
+
+This project uses the [Gradle Shadow plugin](https://github.com/johnrengelman/shadow) to create fat jars.
+
+```
+./gradlew shadowJar
+```
+
+### Test
 
 ```
 ./gradlew test

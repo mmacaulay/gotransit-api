@@ -13,7 +13,7 @@ data class RouteListResult(var data: List<Route> = emptyList())
 class RoutesResource(val routes: List<Route>) {
     @GET
     @Timed
-    fun routes(@QueryParam("type") type: Int?): Response {
+    fun list(@QueryParam("type") type: Int?): Response {
         val routeList = if (type != null) {
             routes.filter { r -> r.type == type }
         } else {
