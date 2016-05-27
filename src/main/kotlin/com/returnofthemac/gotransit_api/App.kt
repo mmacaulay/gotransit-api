@@ -1,16 +1,13 @@
 package com.returnofthemac.gotransit_api
 
-import io.dropwizard.Application
-import io.dropwizard.setup.Bootstrap
-import io.dropwizard.setup.Environment
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import com.returnofthemac.gotransit_api.GTFSParser
-import com.returnofthemac.gotransit_api.Route
-import com.returnofthemac.gotransit_api.Stop
 import com.returnofthemac.gotransit_api.healthchecks.RoutesHealthCheck
 import com.returnofthemac.gotransit_api.healthchecks.StopsHealthCheck
 import com.returnofthemac.gotransit_api.resources.RoutesResource
 import com.returnofthemac.gotransit_api.resources.StopsResource
+import io.dropwizard.Application
+import io.dropwizard.setup.Bootstrap
+import io.dropwizard.setup.Environment
 
 
 class App() : Application<AppConfig>() {
