@@ -1,5 +1,0 @@
-from_stop_id,to_stop_id,transfer_type,min_transfer_time
-UN,UN,2,300
-USBT,UN,2,300
-UN,USBT,2,300
-USBT,USBT,2,300
