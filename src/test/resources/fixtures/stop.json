@@ -1,0 +1,11 @@
+{
+  "id": "WH-ENT-10043",
+  "name": "Whitby GO-Brock St S",
+  "lat": 43.8656,
+  "lon": -78.9361,
+  "zoneId": "test_zone_id",
+  "url":"http://google.ca",
+  "locationType": 2,
+  "parentStation": "whtbyS-parent",
+  "wheelchairBoarding": 1
+}
