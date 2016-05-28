@@ -1,0 +1,13 @@
+{
+  "bikesAllowed": 1,
+  "blockId": "32A",
+  "directionId": 1,
+  "routeId": "237-ST",
+  "routeVariant": "ST",
+  "serviceId": "5445-Fri",
+  "shapeId": "UIUN",
+  "tripHeadsign": "ST-Union Station",
+  "id": "5445-Fri-873",
+  "tripShortName": "873",
+  "wheelchairAccessible": 1
+}

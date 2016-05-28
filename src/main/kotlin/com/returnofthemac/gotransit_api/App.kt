@@ -3,8 +3,10 @@ package com.returnofthemac.gotransit_api
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.returnofthemac.gotransit_api.healthchecks.RoutesHealthCheck
 import com.returnofthemac.gotransit_api.healthchecks.StopsHealthCheck
+import com.returnofthemac.gotransit_api.healthchecks.TripsHealthCheck
 import com.returnofthemac.gotransit_api.resources.RoutesResource
 import com.returnofthemac.gotransit_api.resources.StopsResource
+import com.returnofthemac.gotransit_api.resources.TripsResource
 import io.dropwizard.Application
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
@@ -43,6 +45,15 @@ class App() : Application<AppConfig>() {
 
         val stopsResource = StopsResource(stops)
         environment.jersey().register(stopsResource)
+
+        // Trips
+        val trips = parser.parse<Trip>("/gtfs-data/trips.txt")
+
+        val tripsHealthCheck = TripsHealthCheck(trips)
+        environment.healthChecks().register("trips", tripsHealthCheck)
+
+        val tripsResource = TripsResource(trips)
+        environment.jersey().register(tripsResource)
     }
 }
 
