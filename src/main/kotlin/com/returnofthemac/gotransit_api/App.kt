@@ -1,9 +1,11 @@
 package com.returnofthemac.gotransit_api
 
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import com.returnofthemac.gotransit_api.healthchecks.CalendarDatesHealthCheck
 import com.returnofthemac.gotransit_api.healthchecks.RoutesHealthCheck
 import com.returnofthemac.gotransit_api.healthchecks.StopsHealthCheck
 import com.returnofthemac.gotransit_api.healthchecks.TripsHealthCheck
+import com.returnofthemac.gotransit_api.resources.CalendarDatesResource
 import com.returnofthemac.gotransit_api.resources.RoutesResource
 import com.returnofthemac.gotransit_api.resources.StopsResource
 import com.returnofthemac.gotransit_api.resources.TripsResource
@@ -54,6 +56,15 @@ class App() : Application<AppConfig>() {
 
         val tripsResource = TripsResource(trips)
         environment.jersey().register(tripsResource)
+
+        // Calendar dates
+        val calendarDates = parser.parse<CalendarDate>("/gtfs-data/calendar_dates.txt")
+
+        val calendarDatesHealthCheck = CalendarDatesHealthCheck(calendarDates)
+        environment.healthChecks().register("calendar_dates", calendarDatesHealthCheck)
+
+        val calendarDatesResource = CalendarDatesResource(calendarDates)
+        environment.jersey().register(calendarDatesResource)
     }
 }
 
