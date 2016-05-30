@@ -17,4 +17,18 @@ class StopsAcceptanceTest: AcceptanceTest() {
         val body = response.readEntity(StopListResult::class.java)
         assertEquals(1648, body.data.size)
     }
+
+    @Test
+    fun filterByName() {
+        val client = JerseyClientBuilder().build()
+        val response = client.target(String.format("http://localhost:%d/stops?name=whitby", RULE.localPort))
+                .request()
+                .get()
+
+        assertEquals(200, response.status)
+
+        val body = response.readEntity(StopListResult::class.java)
+        assertEquals(7, body.data.size)
+        assertEquals("Whitby GO-Brock St S", body.data[0].name)
+    }
 }
