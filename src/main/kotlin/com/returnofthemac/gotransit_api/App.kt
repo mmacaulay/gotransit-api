@@ -1,14 +1,11 @@
 package com.returnofthemac.gotransit_api
 
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import com.returnofthemac.gotransit_api.healthchecks.CalendarDatesHealthCheck
-import com.returnofthemac.gotransit_api.healthchecks.RoutesHealthCheck
-import com.returnofthemac.gotransit_api.healthchecks.StopsHealthCheck
-import com.returnofthemac.gotransit_api.healthchecks.TripsHealthCheck
-import com.returnofthemac.gotransit_api.resources.CalendarDatesResource
-import com.returnofthemac.gotransit_api.resources.RoutesResource
-import com.returnofthemac.gotransit_api.resources.StopsResource
-import com.returnofthemac.gotransit_api.resources.TripsResource
+import com.returnofthemac.gotransit_api.resources.healthchecks.CalendarDatesHealthCheck
+import com.returnofthemac.gotransit_api.resources.healthchecks.RoutesHealthCheck
+import com.returnofthemac.gotransit_api.resources.healthchecks.StopsHealthCheck
+import com.returnofthemac.gotransit_api.resources.healthchecks.TripsHealthCheck
+import com.returnofthemac.gotransit_api.resources.*
 import io.dropwizard.Application
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
@@ -30,41 +27,17 @@ class App() : Application<AppConfig>() {
     override fun run(configuration: AppConfig, environment: Environment) {
         val parser = GTFSParser()
 
-        // Routes
         val routes = parser.parse<Route>("/gtfs-data/routes.txt")
+        routesResources(environment, routes)
 
-        val routesHealthCheck = RoutesHealthCheck(routes)
-        environment.healthChecks().register("routes", routesHealthCheck)
-
-        val routesResource = RoutesResource(routes)
-        environment.jersey().register(routesResource)
-
-        // Stops
         val stops = parser.parse<Stop>("/gtfs-data/stops.txt")
+        stopsResources(environment, stops)
 
-        val stopsHealthCheck = StopsHealthCheck(stops)
-        environment.healthChecks().register("stops", stopsHealthCheck)
-
-        val stopsResource = StopsResource(stops)
-        environment.jersey().register(stopsResource)
-
-        // Trips
         val trips = parser.parse<Trip>("/gtfs-data/trips.txt")
+        tripsResources(environment, trips)
 
-        val tripsHealthCheck = TripsHealthCheck(trips)
-        environment.healthChecks().register("trips", tripsHealthCheck)
-
-        val tripsResource = TripsResource(trips)
-        environment.jersey().register(tripsResource)
-
-        // Calendar dates
         val calendarDates = parser.parse<CalendarDate>("/gtfs-data/calendar_dates.txt")
-
-        val calendarDatesHealthCheck = CalendarDatesHealthCheck(calendarDates)
-        environment.healthChecks().register("calendar_dates", calendarDatesHealthCheck)
-
-        val calendarDatesResource = CalendarDatesResource(calendarDates)
-        environment.jersey().register(calendarDatesResource)
+        calendarDatesResources(environment, calendarDates)
     }
 }
 

@@ -1,4 +1,4 @@
-package com.returnofthemac.gotransit_api.healthchecks
+package com.returnofthemac.gotransit_api.resources.healthchecks
 
 import com.codahale.metrics.health.HealthCheck
 import com.returnofthemac.gotransit_api.Route
