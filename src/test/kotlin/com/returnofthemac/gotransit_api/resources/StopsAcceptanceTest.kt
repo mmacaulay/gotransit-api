@@ -1,17 +1,14 @@
 package com.returnofthemac.gotransit_api.resources
 
-import org.glassfish.jersey.client.JerseyClientBuilder
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class StopsAcceptanceTest: AcceptanceTest() {
+    // Stops
+
     @Test
     fun fetchAListOfStops() {
-        val client = JerseyClientBuilder().build()
-        val response = client.target(String.format("http://localhost:%d/stops", RULE.localPort))
-                .request()
-                .get()
-
+        val response = makeRequest("GET", "/stops")
         assertEquals(200, response.status)
 
         val body = response.readEntity(StopListResult::class.java)
@@ -20,15 +17,19 @@ class StopsAcceptanceTest: AcceptanceTest() {
 
     @Test
     fun filterByName() {
-        val client = JerseyClientBuilder().build()
-        val response = client.target(String.format("http://localhost:%d/stops?name=whitby", RULE.localPort))
-                .request()
-                .get()
-
+        val response = makeRequest("GET", "/stops?name=whitby")
         assertEquals(200, response.status)
 
         val body = response.readEntity(StopListResult::class.java)
         assertEquals(7, body.data.size)
         assertEquals("Whitby GO-Brock St S", body.data[0].name)
+    }
+
+    // Stop Destinations
+
+    @Test
+    fun stopDestinationsReturnsNotFound() {
+        val response = makeRequest("GET", "/stops/bogus/destinations")
+        assertEquals(404, response.status)
     }
 }

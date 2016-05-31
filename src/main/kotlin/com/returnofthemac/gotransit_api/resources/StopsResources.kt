@@ -14,6 +14,9 @@ fun stopsResources (environment: Environment, stops: List<Stop>) {
 
     val stopsResource = StopsResource(stops)
     environment.jersey().register(stopsResource)
+
+    val stopDestinationsResource = StopDestinationsResource(stops)
+    environment.jersey().register(stopDestinationsResource)
 }
 
 data class StopListResult(var data: List<Stop> = emptyList())

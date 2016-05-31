@@ -1,17 +1,12 @@
 package com.returnofthemac.gotransit_api.resources
 
-import org.glassfish.jersey.client.JerseyClientBuilder
 import org.junit.Test
 import kotlin.test.assertEquals
 
 class RoutesAcceptanceTest: AcceptanceTest() {
     @Test
     fun fetchAListOfRoutes() {
-        val client = JerseyClientBuilder().build()
-        val response = client.target(String.format("http://localhost:%d/routes", RULE.localPort))
-            .request()
-            .get()
-
+        val response = makeRequest("GET", "/routes")
         assertEquals(200, response.status)
 
         val body = response.readEntity(RouteListResult::class.java)
@@ -20,11 +15,7 @@ class RoutesAcceptanceTest: AcceptanceTest() {
 
     @Test
     fun filterOnType() {
-        val client = JerseyClientBuilder().build()
-        val response = client.target(String.format("http://localhost:%d/routes?type=2", RULE.localPort))
-                .request()
-                .get()
-
+        val response = makeRequest("GET", "/routes?type=2")
         assertEquals(200, response.status)
 
         val body = response.readEntity(RouteListResult::class.java)
