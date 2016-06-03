@@ -1,1 +1,8 @@
 appName: gotransit-api
+server:
+  applicationConnectors:
+    - type: http
+      port: 16080
+  adminConnectors:
+    - type: http
+      port: 16081
