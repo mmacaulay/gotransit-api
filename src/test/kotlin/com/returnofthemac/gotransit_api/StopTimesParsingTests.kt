@@ -15,7 +15,7 @@ class StopTimesParsingTests {
 
     @Test
     fun testParsesListOfStopTimes() {
-        assertEquals(23, stopTimes.size)
+        assertEquals(30, stopTimes.size)
     }
 
     @Test
