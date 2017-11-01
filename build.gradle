@@ -2,7 +2,8 @@ group 'com.returnofthemac'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlinVersion = '1.0.1-2'
+    ext.kotlinVersion = '1.1.1'
+    ext.dropwizardVersion = '1.1.0'
     repositories {
         mavenCentral()
         jcenter()
@@ -29,13 +30,14 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     compile group: 'com.univocity', name: 'univocity-parsers', version: '2.1.1'
-    compile "io.dropwizard:dropwizard-core:0.9.2"
+    compile "io.dropwizard:dropwizard-core:$dropwizardVersion"
     compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.7.1-2'
 
     testCompile "junit:junit:4.11"
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
-    testCompile "io.dropwizard:dropwizard-testing:0.9.2"
+    testCompile "io.dropwizard:dropwizard-testing:$dropwizardVersion"
 }
 
 test {
