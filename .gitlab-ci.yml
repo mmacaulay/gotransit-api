@@ -1,5 +1,0 @@
-image: java:8-jdk
-
-test:
-  script:
-    - ./gradlew test
